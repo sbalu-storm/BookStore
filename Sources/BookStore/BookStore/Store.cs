@@ -73,7 +73,6 @@ namespace BookStore
             Books.Sort();
         }
 
-
         public void Sort(Func<IBook, IBook, int> comparerFunc)
         {
             var comparer_ = Comparer<IBook>.Create((x, y) => comparerFunc(x,y));
@@ -82,6 +81,8 @@ namespace BookStore
 
         public void Sort(IComparer<IBook> comparer)
         {
+            var comparer_ = Comparer<IBook>.Create((x, y) => comparerFunc(x,y));
+
             Books.Sort(comparer);
 
             //IComparer comparer_ = Comparer<IBook[]>.Create((x, y) => x[1].CompareTo(y[1]));

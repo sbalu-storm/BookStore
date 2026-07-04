@@ -1,6 +1,14 @@
 ﻿using BookStore;
 using System.Xml.Linq;
-
+/*
+static class IBookExtensions
+{
+    public static void Randomize(this IBookStore bookStore)
+    {
+        bookStore.Bo
+        Random.Shared.Shuffle(numbers);
+    }
+}*/
 
 class Program
 {
@@ -29,9 +37,12 @@ class Program
 
         bs.Sort();
 
+        // todo : buld sorter
 
         bool ascending = true;
         bs.Sort((IBook left, IBook right) => ascending ? left.CompareTo(right) : -left.CompareTo(right));
+
+        bs.Sort((IBook left, IBook right) => Random.Shared.Next(-1,1) );
 
         //bs.SortByTitleAuthor();  // todo Chained methods sorter build 
 
