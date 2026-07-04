@@ -16,7 +16,7 @@ namespace BookStore
 
         (string bookTitle, string authorName, int pageCount) FindFirstBook(string namePart);
 
-        void SortByTitleAuthor();
+        void SortByTitleAuthor(bool ascending = true);
 
 
         /*
@@ -88,9 +88,10 @@ namespace BookStore
             //return null;
         }
 
-        public void SortByTitleAuthor()
+        public void SortByTitleAuthor(bool ascending = true)
         {
-            Storage.Sort(
+            Storage.Sort((IBook left, IBook right) => ascending? left.CompareTo(right) : -left.CompareTo(right)); // Todo Add IComparer Flyweight factory
+            //Storage.Sort(
 
             //ICloneable
         }
