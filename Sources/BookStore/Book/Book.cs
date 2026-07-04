@@ -53,28 +53,7 @@ namespace BookStore
 
         public int CompareTo(IBook? other)
         {
-            if (other == null) return 1;
-
-            if (this == other)
-            {
-                return 0;
-            }
-
-            var resultByName = Name.CompareTo(other.Name);
-
-            if (resultByName != 0)
-            {
-                return resultByName;
-            }
-
-            var resultByAuthor = Author.CompareTo(other.Author);
-
-            if (resultByAuthor != 0)
-            {
-                return resultByAuthor;
-            }
-
-            return PageCount.CompareTo(other.PageCount);
+            return BookComparerFactory.StandardComparer.Compare(this, other);
         }
     }
 

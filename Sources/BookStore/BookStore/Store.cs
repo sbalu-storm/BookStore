@@ -17,10 +17,21 @@ namespace BookStore
         void Sort(string namePart);
         */
         IEnumerable<IBook> FindBooks(Func<IBook, bool> comparer);
-        void Sort(Func<IBook, IBook, int> comparer);
+        //void Sort(Func<IBook, IBook, int> comparer);
+        void Sort(IComparer<IBook> comparer);
 
         void Sort();
     }
+    /*
+    public class SQLBookStore : IBookStore
+    {
+    }
+
+    public class MemcachedBookStore : IBookStore
+    {
+    }
+    */
+
 
     public class InMemoryBookStore : IBookStore
     {
@@ -72,17 +83,15 @@ namespace BookStore
         {
             Books.Sort();
         }
-
+        /*
         public void Sort(Func<IBook, IBook, int> comparerFunc)
         {
             var comparer_ = Comparer<IBook>.Create((x, y) => comparerFunc(x,y));
             Books.Sort(comparer_);
-        }
+        }*/
 
         public void Sort(IComparer<IBook> comparer)
         {
-            var comparer_ = Comparer<IBook>.Create((x, y) => comparerFunc(x,y));
-
             Books.Sort(comparer);
 
             //IComparer comparer_ = Comparer<IBook[]>.Create((x, y) => x[1].CompareTo(y[1]));

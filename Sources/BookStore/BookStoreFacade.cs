@@ -18,7 +18,6 @@ namespace BookStore
 
         void SortByTitleAuthor(bool ascending = true);
 
-
         /*
         void AddBook(IBook book);
         void AddBooks(IEnumerable<IBook> books);
@@ -90,7 +89,9 @@ namespace BookStore
 
         public void SortByTitleAuthor(bool ascending = true)
         {
-            Storage.Sort((IBook left, IBook right) => ascending? left.CompareTo(right) : -left.CompareTo(right)); // Todo Add IComparer Flyweight factory
+            Storage.Sort(BookComparerFactory.StandardComparer);
+
+            //Storage.Sort((IBook left, IBook right) => ascending? left.CompareTo(right) : -left.CompareTo(right)); // Todo Add IComparer Flyweight factory
             //Storage.Sort(
 
             //ICloneable
