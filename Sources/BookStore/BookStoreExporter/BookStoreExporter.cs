@@ -31,7 +31,7 @@
         
     }
 
-    public class XmlBookStoreExporter : IBookStoreExporter//, IEnumerable<IBook>, IDisposable
+    public class XmlBookStoreExporter : IBookStoreExporter
     {
         public XmlBookStoreExporter(string xmlFileName)
         {

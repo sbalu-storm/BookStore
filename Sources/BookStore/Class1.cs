@@ -1,23 +1,13 @@
 ﻿namespace BookStore
 {
-
-
-
-
-
-
     public interface IBookStoreFactory
     {
 
     }
 
-    public class BookStoreFactory // Lazy
+    public class BookStoreFactory 
     {
-      //  CreateFromXML
+      
     }
 
-
-
-    //Factory ?
-    //guid for author? 
 }

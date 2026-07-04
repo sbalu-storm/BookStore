@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookStore;
-
-namespace BookStore
+﻿namespace BookStore
 {
     interface IBookStoreFacade
     {
@@ -73,8 +66,6 @@ namespace BookStore
             Storage.AddBook(new Book(bookTitle, new Author(authorName), pageCount));
         }
 
-        // todo: separate namespace for this facade
-        // todo: add service and DI/lazy for Author cache-
         public (string bookTitle, string authorName, int pageCount) FindFirstBook(string namePart)
         {
             var result = Storage.FindBooks((IBook book) => book.Name.IndexOf(namePart) != -1); //todo cultureInfo
@@ -84,22 +75,13 @@ namespace BookStore
                 return (book.Name, book.Author.Name, book.PageCount);
             }
             return ((string)null, (string)null, -1);
-            //return null;
         }
 
         public void SortByTitleAuthor(bool ascending = true)
         {
             Storage.Sort(BookComparerFactory.StandardComparer);
-
-            //Storage.Sort((IBook left, IBook right) => ascending? left.CompareTo(right) : -left.CompareTo(right)); // Todo Add IComparer Flyweight factory
-            //Storage.Sort(
-
-            //ICloneable
         }
 
     }
 
-    // todo md
-    // class diagrams
-    // parameters description
 }

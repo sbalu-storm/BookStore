@@ -1,10 +1,5 @@
-﻿using static System.Reflection.Metadata.BlobBuilder;
-
-namespace BookStore
+﻿namespace BookStore
 {
-    // IDisposible
-    // to do memory/stack optimizations 
-
     public interface IBookStore
     {
         void Export(IBookStoreExporter exporter);
@@ -12,12 +7,9 @@ namespace BookStore
         void AddBook(IBook book);
         void AddBooks(IEnumerable<IBook> books);
         void AddBooks(IBookStoreSource bookStoreSource);
-        /*
-        IBook FindBook(string namePart);
-        void Sort(string namePart);
-        */
+
         IEnumerable<IBook> FindBooks(Func<IBook, bool> comparer);
-        //void Sort(Func<IBook, IBook, int> comparer);
+
         void Sort(IComparer<IBook> comparer);
 
         void Sort();

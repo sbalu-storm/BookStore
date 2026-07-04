@@ -20,9 +20,12 @@
         }
     }
 
-    public class XmlBookStoreSource : IBookStoreSource//, IEnumerable<IBook>, IDisposable
+
+
+    public class XmlBookStoreSource : IBookStoreSource
     {
-        public XmlBookStoreSource(string xmlFilePath) //todo add stream
+        //todo add stream
+        public XmlBookStoreSource(string xmlFilePath) 
         {
         }
 

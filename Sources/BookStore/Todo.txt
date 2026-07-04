@@ -1,0 +1,53 @@
+﻿// testing policy: 
+// every public method should have a test
+// operators should be tested as Interface and as Implementation
+
+
+
+// todo create public facade test profider enums
+// internal structures should be hidden from external user, it allows us more flexibility in changing our external structures.
+//
+// otherwise, if the user choose to uncover our internal infrastructure, anyway we will provide two interfaces highlevel and lowlevel.
+
+
+// todo: IBookStoreFacade separate namespace for this facade
+    // todo:  add service and DI/lazy for Author cache-
+
+    //ICloneable
+    // todo md
+    // class diagrams
+    // parameters description
+
+
+// IDisposible
+// to do memory/stack optimizations 
+
+
+
+    /* todo simple LINQ implementation of the task
+     * 
+    var sortedList = employees
+        .OrderBy(e => e.LastName)       // Primary Sort (Ascending)
+        .ThenBy(e => e.FirstName)       // Secondary Sort (Ascending)
+        .ThenByDescending(e => e.Age)   // Tertiary Sort (Descending)
+        .ToList();                      // Materializes the query
+    */
+    //Factory ?
+    //guid for author? 
+
+
+
+
+        // reduce memory allocations
+    //: IEquatable<IBook>
+    //EqualityComparer<Book>.Default.Equals(left, right);
+
+
+
+
+        // Equals, GUID, == 
+    // IDisposible ? 
+
+    //todo add const readonly sealed final etc and all related stuff
+    //EqualityComparer<Book>.Default.Equals(left, right);
+

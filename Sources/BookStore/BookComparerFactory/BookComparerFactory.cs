@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace BookStore
+﻿namespace BookStore
 {
 
     public static class BookComparerFactory
@@ -19,8 +17,10 @@ namespace BookStore
         public static IComparer<IBook> RandomComparer => _randomComparer.Value;
     }
 
-
-    public class BookComparerBuilder // todo: make scalable when we would have Superbook with rating or sub-books or illustrations
+    // todo: make scalable when we would have Superbook with rating or sub-books or illustrations
+    // so adding new field or IBook implementation should affect
+    // only BookComparerFactory, but not BookComparerBuilder
+    public class BookComparerBuilder 
     {
         public enum SortBy
         {
@@ -85,15 +85,4 @@ namespace BookStore
             return 0;
         }
     }
-
-    /* todo simple LINQ implementation of the task
-     * 
-    var sortedList = employees
-        .OrderBy(e => e.LastName)       // Primary Sort (Ascending)
-        .ThenBy(e => e.FirstName)       // Secondary Sort (Ascending)
-        .ThenByDescending(e => e.Age)   // Tertiary Sort (Descending)
-        .ToList();                      // Materializes the query
-    */
-    //Factory ?
-    //guid for author? 
 }
