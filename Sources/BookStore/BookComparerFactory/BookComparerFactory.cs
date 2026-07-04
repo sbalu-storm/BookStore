@@ -9,7 +9,7 @@
             new(() => new BookComparerBuilder().ByName(false).ByAuthor(false).ByPageCount(false).Build());
 
         private static Lazy<IComparer<IBook>> _randomComparer =
-            new(() => Comparer<IBook>.Create((IBook x, IBook y) => Random.Shared.Next(-1, 1)) );
+            new(() => Comparer<IBook>.Create((IBook x, IBook y) => Random.Shared.Next(-1, 1)) ); // todo check if it is ok
 
         public static IComparer<IBook> StandardComparer => _standardComparer.Value;
         public static IComparer<IBook> DescendingComparer => _descendingComparer.Value;
@@ -71,8 +71,8 @@
                 int result;
                 switch (sortOrder.Field)
                 {
-                    case SortBy.Name: result = x.Name.CompareTo(y.Name); break;
-                    case SortBy.Author: result = x.Author.CompareTo(y.Author); break;
+                    case SortBy.Name: result = string.Compare(x.Name, y.Name); break;
+                    case SortBy.Author: result = IAuthor.Compare(x.Author, y.Author); break;
                     case SortBy.PageCount: result = x.PageCount.CompareTo(y.PageCount); break;
                     default: result = 0; break;
                 }

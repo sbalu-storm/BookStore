@@ -1,4 +1,6 @@
-﻿namespace BookStore
+﻿using System.Xml.Linq;
+
+namespace BookStore
 {
     public interface IBookStoreExporter
     {
@@ -33,13 +35,24 @@
 
     public class XmlBookStoreExporter : IBookStoreExporter
     {
+        string _xmlFileName;
+
         public XmlBookStoreExporter(string xmlFileName)
         {
+            _xmlFileName = xmlFileName;
         }
 
         public void Export(IEnumerable<IBook> books)
         {
-            throw new NotImplementedException();
+            XElement xmlTree = new XElement("LIBRARY",
+                from book in books
+                select new XElement("BOOK",
+                    new XElement("TITLE", book.Name),
+                    new XElement("AUTHOR", book.Author?.Name),
+                    new XElement("PAGECOUNT", book.PageCount)
+                )
+            );
+            xmlTree.Save(_xmlFileName);
         }
     }
 

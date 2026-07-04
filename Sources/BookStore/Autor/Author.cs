@@ -5,6 +5,21 @@
         string Name { get; }
 
         bool Equals(IAuthor? other);
+
+        static int Compare(IAuthor x, IAuthor y)
+        {
+            if (x == null && y == null)
+            {
+                return 0;
+            }
+
+            if (x == null)
+            {
+                return -y.CompareTo(x);
+            }
+
+            return x.CompareTo(y);
+        }
     }
 
     public class Author : IAuthor

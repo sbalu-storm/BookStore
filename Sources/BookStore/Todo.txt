@@ -1,4 +1,22 @@
-﻿// testing policy: 
+﻿1. ADD TESTS
+
+2. ADD XML IMPORT
+KEEP CODEPAGE.
+CULTUREINFO.
+
+3. ADD Author dictionary caching
+
+
+
+
+
+
+
+
+
+
+
+// testing policy: 
 // every public method should have a test
 // operators should be tested as Interface and as Implementation
 
