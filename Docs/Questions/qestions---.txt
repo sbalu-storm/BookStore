@@ -1,0 +1,87 @@
+Here is the list of the questions.
+
+Some questions may seem too detailed or too technical, but I assume that it is appropriate, because we create a library, so the customer is the developer, not the end user. And the needs and how the library would be used is important for the library`s internal architecture.
+
+What does "basic, not fuzzy" means in the requirement string "Book Search by part of title (basic, not fuzzy)" ?
+Does than mean that the search is case-sensitive, no regEx, simple string comparsion in invariant culture?
+
+Do we need the search and the sorting to be Case sensitive?
+
+What is the maximum number of books in the database?
+Should the library be thread-safe?
+Is an Async Access Interface needed?
+
+What behavior is needed in case of an xml parsing error or a specific field parsing error?
+(Options - logging and doing what is possible, returning an extended error status or fail-fast and an exception at the smallest error)
+
+Optimization for memory, or for search speed, or for item addition speed?
+
+Should the database be stored in memory or use some third-party provider (SQL, etc)?
+
+Is logging needed?
+
+Are duplicate records supported? (full or partial, books can be of different years of publication and be different, but have the same parameters)
+
+Author - is it one string or several (first name, last name)?
+
+Do I need to parse/normalize book titles, authors (e.g., remove double spaces, etc.) or load and sort as is?
+
+Should multiple xml loads be supported ?
+
+Do we need a minimal implementation, extendable implementation with minimal interface or extendable implementation with opened interface ?
+(in some cases, over-engineering is a serious mistake)
+
+
+
+
+
+
+
+
+
+
+Яка максимальна кількість книжок в базі ?
+Чи має бібліотека бути потокобезпечною ?
+Чи потрібен Асинхронний інтерфейс доступу ?
+
+Яка поведінка потрібна у випадку помилки парсінгу xml або конкретного поля ?
+Варіанти - логування і робимо що можливо, повертаємо розширений стутус або fail-fast і ексепшин при найменьшій помилці
+
+Оптимізація по пам'яті, чи по швидкості пошуку, чи по швидкості додавання ?
+
+Базу потрібно зберігати в пам'яті чи використати якийсь сторонный провайдер (SQL, etc) ?
+
+Чи потрібне логування ?
+
+Чи підтримуються дублікати записів ? ( повні або часткові, книжки можуть бути різних років видання і бути різними, але мати однакові параметри)
+
+Автор - це одна строка чи декілька (ім'я, фамілія) ?
+
+Пошук і сортування Case sensitive ? 
+
+Чи потрібно парсити/нормалізувати назви книжок, авторів (наприклад, прибирати подвійні спейси, тощо) чи завантажувати і сортувати як є?
+
+Чи підтримується декілька завантажень
+
+Потрібна мінімальна реалізація чи поівноцінна расширяемая?
+(in some cases overengeneering is serious mistake)
+
+
+Що важливіше - 
+
+
+
+
+
+
+
+
+
+
+
+Яка поведінка при перевищені ліміту книжок ?
+Яка поведінка при помилці доступу до xml ?
+
+Макс кількість сторінок, довжина автора чи назв
+
+Кодування in=out

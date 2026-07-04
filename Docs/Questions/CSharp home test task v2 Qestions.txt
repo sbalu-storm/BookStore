@@ -1,0 +1,41 @@
+Hi, Team!
+Here is the list of the questions for the "CSharp home test task v2" project requirements.
+
+1. Some questions may seem too detailed or too technical, but I assume that it is appropriate, because we create a library, so the customer is the developer, not the end user. And the needs and how the library will be used is important for the library's internal architecture.
+
+2. What does "basic, not fuzzy" mean in the requirement string "Book Search by part of title (basic, not fuzzy)" ?
+3. Does than mean that the search is case-sensitive, no regEx, simple string comparison in invariant culture?
+
+4. Do we need the search and the sorting to be case-sensitive?
+
+5. What is the maximum number of books in the database?
+6. Should the library be thread-safe?
+7. Is an Async Access Interface needed?
+
+8. What behavior is needed in case of an xml parsing error or a specific field parsing error?
+(Options —
+a) logging and doing what is possible, returning an extended error status or
+b) fail-fast and an exception at the smallest error)
+
+9. Is logging needed?
+
+10. Optimization for memory, or for search speed, or for item addition speed?
+
+11. Should the database be stored in memory or use some third-party provider (SQL, etc)?
+
+12. Are duplicate records supported? (full or partial, books can be of different years of publication and be different, but have the same parameters)
+
+13. Author — is it one string or several (first name, last name)?
+
+14. Do I need to parse/normalize book titles, authors (e.g., remove double spaces, etc.) or load and sort as is?
+
+15. Should multiple xml loads be supported ?
+
+16. Do we need
+a) minimal implementation,
+b) extendable implementation with minimal interface or
+c) extendable implementation with open interface ?
+(in some cases, over-engineering is a serious mistake. That is why asking that separately)
+
+Best Regards,
+Sergiy.
