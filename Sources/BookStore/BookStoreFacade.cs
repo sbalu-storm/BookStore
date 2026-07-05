@@ -6,9 +6,9 @@ using BookStore.Models;
 
 namespace BookStore
 {
-    class BookStoreFacade: IBookStoreFacade//, IBookStoreAsyncFacade
+    public class BookStoreFacade: IBookStoreApi
     {
-        private BookStore.IBookStore Storage { get; }
+        private IBookStore Storage { get; }
 
         public BookStoreFacade(string xmlFilePath)
         {

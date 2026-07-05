@@ -11,4 +11,10 @@
     <ProjectReference Include="..\BookStore\BookStore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="testSource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -1,11 +1,4 @@
-﻿using BookStore.BookComparer;
-using BookStore.BookStore;
-using BookStore.BookStoreExporter;
-using BookStore.BookStoreSource;
-using BookStore.Models;
-using System.Xml.Linq;
-
-namespace BookStore
+﻿namespace BookStore
 {
     interface IBookStoreAsyncFacade
     {

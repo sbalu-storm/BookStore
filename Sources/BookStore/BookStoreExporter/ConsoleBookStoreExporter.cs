@@ -8,7 +8,7 @@ namespace BookStore.BookStoreExporter
         {
             foreach (var book in books)
             {
-                Console.WriteLine($"Title: {book?.Name}   Author: {book?.Author?.Name}   Title: {book?.PageCount}   ");
+                Console.WriteLine($"Title: {book?.Name,-25}\tAuthor: {book?.Author?.Name,-25}\tPages: {book?.PageCount}");
             }
         }
     }

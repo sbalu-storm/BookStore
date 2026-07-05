@@ -2,11 +2,11 @@
 
 namespace BookStore
 {
-    class BookStoreSimpleFacade : IBookStoreFacade
+    public class BookStoreSimple : IBookStoreApi
     {
         private List<(string BookTitle, string AuthorName, int PageCount)> _storage = [];
 
-        public BookStoreSimpleFacade(string xmlFilePath)
+        public BookStoreSimple(string xmlFilePath)
         {
             AddBooksFromXml(xmlFilePath);
         }
@@ -15,12 +15,13 @@ namespace BookStore
         {
             var doc = XDocument.Load(xmlFilePath, LoadOptions.PreserveWhitespace);
 
-            doc.Descendants("BOOK")
-                .Select(b => ( 
-                    (string)b.Element("TITLE"), 
-                    (string)b.Element("AUTHOR"), 
-                    (int)b.Element("PAGECOUNT")
-                    ) );
+            var importedBooks = doc.Descendants("BOOK")
+                                   .Select(b => ( 
+                                       (string)b.Element("TITLE"), 
+                                       (string)b.Element("AUTHOR"), 
+                                       (int)b.Element("PAGECOUNT")
+                                       ) );
+            _storage.AddRange(importedBooks);
         }
 
         public void ExportToXml(string xmlFilePath)

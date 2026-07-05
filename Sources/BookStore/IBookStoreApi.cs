@@ -1,13 +1,6 @@
-﻿using BookStore.BookComparer;
-using BookStore.BookStore;
-using BookStore.BookStoreExporter;
-using BookStore.BookStoreSource;
-using BookStore.Models;
-using System.Xml.Linq;
-
-namespace BookStore
+﻿namespace BookStore
 {
-    interface IBookStoreFacade
+    interface IBookStoreApi
     {
         void AddBooksFromXml(string filePath);
         void ExportToXml(string filePath);

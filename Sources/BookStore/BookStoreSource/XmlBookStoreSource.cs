@@ -21,8 +21,8 @@ namespace BookStore.BookStoreSource
         {
             return _doc.Descendants("BOOK")
                 .Select(b => new Book(
-                (string)b.Element("TITLE"),
-                new Author((string)b.Element("AUTHOR")),
+                (string?)b.Element("TITLE"),
+                new Author((string?)b.Element("AUTHOR")),
                 (int)b.Element("PAGECOUNT")
                 ));
         }
