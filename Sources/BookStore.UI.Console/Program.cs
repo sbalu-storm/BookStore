@@ -40,7 +40,7 @@ namespace BookStore.UI.Teminal
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Data process error " + ex.ToString());
+                Console.WriteLine("FacadeApiUsageSample - Data process error " + ex.Message.ToString());
             }
         }
 
@@ -71,7 +71,7 @@ namespace BookStore.UI.Teminal
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Data process error " + ex.ToString());
+                Console.WriteLine("SimpleApiUsageSample - Data process error " + ex.Message.ToString());
             }
         }
 
@@ -108,7 +108,7 @@ namespace BookStore.UI.Teminal
                 bs.AddBook(new Book(null, new Author("W"), 1243));
                 bs.AddBook(new Book(" ", new Author("Empty Autror"), 1243));
                 bs.AddBook(new Book("Null author", null, 1243));
-                bs.AddBook(new Book("Book7", null, -1));
+                //bs.AddBook(new Book("Book7", null, -1));
 
                 bs.AddBook(new Book("Jonatan Livingston Seagull", new Author("Richard Bach"), 122));
                 bs.AddBook(new Book("Hyperion", new Author("Dan Simmons"), 700));
@@ -152,7 +152,7 @@ namespace BookStore.UI.Teminal
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Data process error " + ex.ToString());
+                Console.WriteLine("LowLevelApiUsageSample - Data process error " + ex.Message.ToString());
             }
         }
 

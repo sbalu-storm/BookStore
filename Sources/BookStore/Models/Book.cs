@@ -22,6 +22,9 @@ namespace BookStore.Models
             Name = name;
             Author = author;
             PageCount = pageCount;
+
+            if (pageCount < 0)
+                throw new InvalidDataException("Page count cannot be negative");
         }
 
         public bool Equals(IBook? other)
