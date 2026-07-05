@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.37328.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore", "BookStore\BookStore.csproj", "{334AED45-B415-421B-8E0B-59DCB5E8A6FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.UI.Console", "BookStore.UI.Console\BookStore.UI.Console.csproj", "{E69A696D-11CE-4DF0-95FE-93A4F90067FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.UI.Teminal", "BookStore.UI.Console\BookStore.UI.Teminal.csproj", "{E69A696D-11CE-4DF0-95FE-93A4F90067FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

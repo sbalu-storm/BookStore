@@ -1,4 +1,6 @@
-﻿namespace BookStore
+﻿using BookStore.BookComparer;
+
+namespace BookStore.Models
 {
     public interface IBook : IComparable<IBook> 
     {

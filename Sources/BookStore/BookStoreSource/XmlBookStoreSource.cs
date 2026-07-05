@@ -1,32 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using static System.Reflection.Metadata.BlobBuilder;
+﻿using System.Xml.Linq;
+using BookStore.Models;
 
-namespace BookStore
+namespace BookStore.BookStoreSource
 {
-    public interface IBookStoreSource
-    {
-        IEnumerable<IBook> GetAllBooks();
-    }
-
-    public class ArrayBookStoreSource : IBookStoreSource
-    {
-        IEnumerable<IBook> _books;
-
-        public ArrayBookStoreSource(IEnumerable<IBook> books) 
-        {
-            _books = books;
-        }
-
-        public IEnumerable<IBook> GetAllBooks()
-        {
-            return _books;
-        }
-    }
-
-
-
     public class XmlBookStoreSource : IBookStoreSource
     {
         XDocument _doc;
@@ -51,5 +27,4 @@ namespace BookStore
                 ));
         }
     }
-
 }
