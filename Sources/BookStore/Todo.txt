@@ -7,7 +7,8 @@ CULTUREINFO.
 3. ADD Author dictionary caching
 
 
-
+TODO.
+SIMPLE MINIMAL IMPLEMENTATION
 
 
 
@@ -42,14 +43,6 @@ CULTUREINFO.
 
 
 
-    /* todo simple LINQ implementation of the task
-     * 
-    var sortedList = employees
-        .OrderBy(e => e.LastName)       // Primary Sort (Ascending)
-        .ThenBy(e => e.FirstName)       // Secondary Sort (Ascending)
-        .ThenByDescending(e => e.Age)   // Tertiary Sort (Descending)
-        .ToList();                      // Materializes the query
-    */
     //Factory ?
     //guid for author? 
 

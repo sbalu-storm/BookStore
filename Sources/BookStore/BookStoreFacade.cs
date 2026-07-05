@@ -1,5 +1,10 @@
-﻿namespace BookStore
+﻿using System.Xml.Linq;
+
+namespace BookStore
 {
+
+
+
     interface IBookStoreFacade
     {
         void AddBooksFromXml(string filePath);
@@ -7,7 +12,7 @@
 
         void AddBook(string bookTitle, string authorName, int pageCount);
 
-        (string bookTitle, string authorName, int pageCount) FindFirstBook(string namePart);
+        (string BookTitle, string AuthorName, int PageCount) FindFirstBook(string namePart);
 
         void SortByTitleAuthor(bool ascending = true);
 
@@ -23,6 +28,9 @@
         //void Sort(Func<IBook, IBook, bool> comparer);
     }
 
+
+
+
     interface IBookStoreAsyncFacade
     {
         Task AddBooksFromXmlAsync(string filePath, CancellationToken ct, bool configureAwait = false);
@@ -30,7 +38,7 @@
 
         Task AddBookAsync(string bookTitle, string authorName, int pageCount);
 
-        Task<(string bookTitle, string authorName, int pageCount)> FindBookAsync(string namePart, CancellationToken ct, bool configureAwait = false);
+        Task<(string BookTitle, string AuthorName, int PageCount)> FindBookAsync(string namePart, CancellationToken ct, bool configureAwait = false);
 
         Task SortAsync(string namePart, CancellationToken ct, bool configureAwait = false);
 /*
@@ -66,7 +74,7 @@
             Storage.AddBook(new Book(bookTitle, new Author(authorName), pageCount));
         }
 
-        public (string bookTitle, string authorName, int pageCount) FindFirstBook(string namePart)
+        public (string BookTitle, string AuthorName, int PageCount) FindFirstBook(string namePart)
         {
             var result = Storage.FindBooks((IBook book) => book.Name.IndexOf(namePart) != -1); //todo cultureInfo
             if (result.Any())
@@ -74,7 +82,7 @@
                 var book = result.First();
                 return (book.Name, book.Author.Name, book.PageCount);
             }
-            return ((string)null, (string)null, -1);
+            throw new KeyNotFoundException();
         }
 
         public void SortByTitleAuthor(bool ascending = true)
@@ -83,5 +91,79 @@
         }
 
     }
+
+
+
+
+    class BookStoreSimpleFacade : IBookStoreFacade
+    {
+        private List<(string BookTitle, string AuthorName, int PageCount)> _storage = [];
+
+        public BookStoreSimpleFacade(string xmlFilePath)
+        {
+            AddBooksFromXml(xmlFilePath);
+        }
+
+        public void AddBooksFromXml(string xmlFilePath)
+        {
+            var doc = XDocument.Load(xmlFilePath, LoadOptions.PreserveWhitespace);
+
+            doc.Descendants("BOOK")
+                .Select(b => ( 
+                    (string)b.Element("TITLE"), 
+                    (string)b.Element("AUTHOR"), 
+                    (int)b.Element("PAGECOUNT")
+                    ) );
+        }
+
+        public void ExportToXml(string xmlFilePath)
+        {
+            XElement xmlTree = new XElement("LIBRARY",
+                from book in _storage
+                select new XElement("BOOK",
+                    new XElement("TITLE", book.BookTitle),
+                    new XElement("AUTHOR", book.AuthorName),
+                    new XElement("PAGECOUNT", book.PageCount)
+                )
+            );
+            xmlTree.Save(xmlFilePath);
+        }
+
+        public void AddBook(string bookTitle, string authorName, int pageCount)
+        {
+            _storage.Add( (bookTitle, authorName, pageCount ) );
+        }
+
+        public (string BookTitle, string AuthorName, int PageCount) FindFirstBook(string namePart)
+        {
+            return _storage.Where(x => x.BookTitle.Contains(namePart, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+        }
+
+        public void SortByTitleAuthor(bool ascending = true)
+        {
+            if (ascending)
+            {
+                _storage = _storage
+                    .OrderBy(e => e.BookTitle)
+                    .ThenBy(e => e.AuthorName)
+                    .ThenBy(e => e.PageCount)
+                    .ToList();
+            }
+            else
+            {
+                _storage = _storage
+                    .OrderByDescending(e => e.BookTitle)
+                    .ThenByDescending(e => e.AuthorName)
+                    .ThenByDescending(e => e.PageCount)
+                    .ToList();
+            }
+        }
+
+    }
+
+
+
+
+
 
 }
