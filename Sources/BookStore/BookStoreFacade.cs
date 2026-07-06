@@ -40,7 +40,13 @@ namespace BookStore
                 var book = result.First();
                 return (book.Title, book.Author.Name, book.PageCount);
             }
-            throw new KeyNotFoundException();
+            return IBookStoreApi.EmptyBook;
+        }
+
+        public IEnumerable<(string BookTitle, string AuthorName, int PageCount)> FindBooks(string namePart)
+        {
+            var result = Storage.FindBooks(namePart);
+            return result.Select((IBook book) => (book.Title, book.Author.Name, book.PageCount));
         }
 
         public void SortByTitleAuthor(bool ascending = true)

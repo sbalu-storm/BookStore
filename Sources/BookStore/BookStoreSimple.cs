@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using BookStore.Models;
+using System.Xml.Linq;
 
 namespace BookStore
 {
@@ -47,6 +48,11 @@ namespace BookStore
             return _storage.Where(x => x.BookTitle.Contains(namePart, StringComparison.InvariantCulture)).FirstOrDefault();
         }
 
+        public IEnumerable<(string BookTitle, string AuthorName, int PageCount)> FindBooks(string namePart)
+        {
+            return _storage.Where(x => x.BookTitle.Contains(namePart, StringComparison.InvariantCulture));
+        }
+
         public void SortByTitleAuthor(bool ascending = true)
         {
             if (ascending)
@@ -68,10 +74,5 @@ namespace BookStore
         }
 
     }
-
-
-
-
-
 
 }

@@ -24,6 +24,15 @@ namespace BookStore.UI.Teminal
 
                 bsf.AddBooksFromXml("testSource.xml");
                 bsf.ExportToXml("outputFacadepleApi.xml");
+                
+                var result = bsf.FindFirstBook("Unknown Book");
+                if (result == IBookStoreApi.EmptyBook)
+                {
+                    Console.WriteLine("Could not find the book");
+                }
+                var hyperionBooks = bsf.FindBooks("Hyperion").ToList();
+                var aBooks = bsf.FindBooks("a").ToList();
+                var noneBooks = bsf.FindBooks("Unknown Book").ToList();
 
                 PrintBooksFromXml("FacadeApiUsageSample", "outputFacadepleApi.xml");
 
@@ -56,6 +65,16 @@ namespace BookStore.UI.Teminal
                 bss.AddBooksFromXml("testSource.xml");
                 bss.ExportToXml("outputSimpleApi.xml");
 
+                var result = bss.FindFirstBook("Unknown Book");
+                if (result == IBookStoreApi.EmptyBook)
+                {
+                    Console.WriteLine("Could not find the book");
+                }
+
+                var hyperionBooks = bss.FindBooks("Hyperion").ToList();
+                var aBooks = bss.FindBooks("a").ToList();
+                var noneBooks = bss.FindBooks("Unknown Book").ToList();
+
                 PrintBooksFromXml("SimpleApiUsageSample", "outputSimpleApi.xml");
 
                 bss.SortByTitleAuthor();
@@ -86,10 +105,6 @@ namespace BookStore.UI.Teminal
         {
             try
             {
-                //todo
-                //AuthorCache authorCache = new AuthorCache();
-                //AuthorCache.Resolve("Fawler");
-
                 var books = new Book[]
                 {
                     new("Refactoring", new Author("Fawler"), 432),
@@ -103,7 +118,6 @@ namespace BookStore.UI.Teminal
 
                 bs.AddBook(new Book(" ", new Author("Empty Title"), 1243));
                 bs.AddBook(new Book("Null author", null, 1243));
-                //bs.AddBook(new Book("Book7", null, -1));
 
                 bs.AddBook(new Book("Jonatan Livingston Seagull", new Author("Richard Bach"), 122));
                 bs.AddBook(new Book("Hyperion", new Author("Dan Simmons"), 700));

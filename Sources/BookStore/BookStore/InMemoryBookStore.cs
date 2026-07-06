@@ -54,7 +54,6 @@ namespace BookStore.BookStore
             return FindBooks((IBook book) => book.Title.Contains(titlePart, StringComparison.InvariantCulture));
         }
 
-
         public void Sort()
         {
             Books.Sort();
