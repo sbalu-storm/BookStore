@@ -1,102 +1,11 @@
-﻿1. ADD TESTS
-
-2. ADD XML IMPORT
-KEEP CODEPAGE.
-CULTUREINFO.
-
-3. ADD Author dictionary caching
-
-
-TODO.
-SIMPLE MINIMAL IMPLEMENTATION
-
-
-
-
-
-
-
-
-// testing policy: 
-// every public method should have a test
-// operators should be tested as Interface and as Implementation
-
-
-
-// todo create public facade test profider enums
-// internal structures should be hidden from external user, it allows us more flexibility in changing our external structures.
-//
-// otherwise, if the user choose to uncover our internal infrastructure, anyway we will provide two interfaces highlevel and lowlevel.
-
-
-// todo: IBookStoreFacade separate namespace for this facade
-    // todo:  add service and DI/lazy for Author cache-
-
-    //ICloneable
-    // todo md
-    // class diagrams
-    // parameters description
-
-
-// IDisposible
-// to do memory/stack optimizations 
-
-
-
-    //Factory ?
-    //guid for author? 
-
-
-
-
-        // reduce memory allocations
-    //: IEquatable<IBook>
-    //EqualityComparer<Book>.Default.Equals(left, right);
-
-
-
-
-        // Equals, GUID, == 
-    // IDisposible ? 
-
-    //todo add const readonly sealed final etc and all related stuff
-    //EqualityComparer<Book>.Default.Equals(left, right);
-
-
-
-
-
-
-    
-        //IComparer comparer_ = Comparer<IBook[]>.Create((x, y) => x[1].CompareTo(y[1]));
-
-        //Books.Sort(comparer_);
-
-        //Autroh
-        //todo Book == != Eq Hash IHashable IEnumerable IComparable
-
-
-
-        //IComparer<in T> where T : allows ref struct
-        //{
-        //
-        // Summary:
-        //     Compares two objects and returns a value indicating whether one is less than,
-        //     equal to, or greater than the other.
-        //
-        // Parameters:
-        //   x:
-        //     The first object to compare.
-        //
-        //   y:
-        //     The second object to compare.
-        //
-        // Returns:
-        //     A signed integer that indicates the relative values of x and y, as shown in the
-        //     following table.
-        //
-        //     Value – Meaning
-        //     Less than zero –x is less than y.
-        //     Zero –x equals y.
-        //     Greater than zero –x is greater than y.
-        //int Compare(T? x, T? y);
+﻿// todo implement planned tests
+// todo cacke for author
+// todo md readme
+// class diagrams
+// parameters description
+// to do memory/stack optimizations, research on possibility to reduce memory allocations
+//		 implement IEquatable<IBook>, EqualityComparer<Book>.Default.Equals(left, right);
+// todo add const readonly sealed final etc
+// todo add randomizer
+// todo add MT support
+// todo add async implementation

@@ -13,7 +13,6 @@ namespace BookStore
         public BookStoreFacade(string xmlFilePath)
         {
             Storage = new InMemoryBookStore();
-            //todo add empty version - its required for async loading
             AddBooksFromXml(xmlFilePath);
         }
 
@@ -29,16 +28,17 @@ namespace BookStore
 
         public void AddBook(string bookTitle, string authorName, int pageCount)
         {
+            // todo add authors cache (and possibility to share authors list between different bookstores)
             Storage.AddBook(new Book(bookTitle, new Author(authorName), pageCount));
         }
 
         public (string BookTitle, string AuthorName, int PageCount) FindFirstBook(string namePart)
         {
-            var result = Storage.FindBooks((IBook book) => book.Name.IndexOf(namePart) != -1); //todo cultureInfo
+            var result = Storage.FindBooks(namePart);
             if (result.Any())
             {
                 var book = result.First();
-                return (book.Name, book.Author.Name, book.PageCount);
+                return (book.Title, book.Author.Name, book.PageCount);
             }
             throw new KeyNotFoundException();
         }

@@ -5,11 +5,12 @@ namespace BookStore.BookComparer
     // todo: make scalable when we would have Superbook with rating or sub-books or illustrations
     // so adding new field or IBook implementation should affect
     // only BookComparerFactory, but not BookComparerBuilder
+    // something alike LINQ search builder
     public class BookComparerBuilder 
     {
         public enum SortBy
         {
-            Name,
+            Title,
             Author,
             PageCount
         }
@@ -18,7 +19,7 @@ namespace BookStore.BookComparer
 
         public BookComparerBuilder ByName(bool ascending = true)
         {
-            SortOrder.Add((SortBy.Name, ascending));
+            SortOrder.Add((SortBy.Title, ascending));
             return this;
         }
 
@@ -56,7 +57,7 @@ namespace BookStore.BookComparer
                 int result;
                 switch (sortOrder.Field)
                 {
-                    case SortBy.Name: result = string.Compare(x.Name, y.Name); break;
+                    case SortBy.Title: result = string.Compare(x.Title, y.Title); break;
                     case SortBy.Author: result = IAuthor.Compare(x.Author, y.Author); break;
                     case SortBy.PageCount: result = x.PageCount.CompareTo(y.PageCount); break;
                     default: result = 0; break;

@@ -3,14 +3,9 @@ using BookStore.BookStore;
 using BookStore.BookStoreExporter;
 using BookStore.BookStoreSource;
 using BookStore.Models;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookStore.UI.Teminal
 {
-    // next
-    // Several usage samples including detailed And user-level API
-
-
     class Program
     {
         static void FacadeApiUsageSample()
@@ -91,6 +86,7 @@ namespace BookStore.UI.Teminal
         {
             try
             {
+                //todo
                 //AuthorCache authorCache = new AuthorCache();
                 //AuthorCache.Resolve("Fawler");
 
@@ -105,8 +101,7 @@ namespace BookStore.UI.Teminal
 
                 IBookStore bs = new InMemoryBookStore(new ArrayBookStoreSource(books));
 
-                bs.AddBook(new Book(null, new Author("W"), 1243));
-                bs.AddBook(new Book(" ", new Author("Empty Autror"), 1243));
+                bs.AddBook(new Book(" ", new Author("Empty Title"), 1243));
                 bs.AddBook(new Book("Null author", null, 1243));
                 //bs.AddBook(new Book("Book7", null, -1));
 
@@ -134,7 +129,7 @@ namespace BookStore.UI.Teminal
 
                 //bs.Sort();
                 //bs.Sort((new BookComparerBuilder()).ByPageCount().ByName().ByAuthor().Build());
-                bs.Sort(BookComparerFactory.RandomComparer);
+                
                 bs.Sort(BookComparerFactory.StandardComparer);
                 //bs.Sort(BookComparerFactory.DescendingComparer);
 

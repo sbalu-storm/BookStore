@@ -6,17 +6,15 @@
 
         bool Equals(IAuthor? other);
 
+        private static readonly Lazy<IAuthor> _default = new(() => new Author(""));
+        public static IAuthor Default => _default.Value;
+
         static int Compare(IAuthor x, IAuthor y)
         {
-            if (x == null && y == null)
-            {
-                return 0;
-            }
-
-            if (x == null)
-            {
-                return -y.CompareTo(x);
-            }
+            if (x == null) 
+                x = Default;
+            if (y == null) 
+                y = Default;
 
             return x.CompareTo(y);
         }
@@ -28,12 +26,17 @@
 
         public Author(string name)
         {
-            Name = name;
+            if (name == null)
+                Name = "";
+            else
+                Name = name;
         }
 
         public bool Equals(IAuthor? other)
         {
-            if (other is null) return false;
+            if (other == null)
+                other = IAuthor.Default;
+
             return Name == other.Name;
         }
 
@@ -45,9 +48,15 @@
 
         public int CompareTo(IAuthor? other)
         {
-            if (other == null) return 1;
+            if (other == null)
+                other = IAuthor.Default;
 
             return Name.CompareTo(other.Name);
+        }
+
+        public override string ToString()
+        {
+            return $"{Name}";
         }
 
     }

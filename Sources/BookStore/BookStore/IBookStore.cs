@@ -12,6 +12,7 @@ namespace BookStore.BookStore
         void AddBooks(IEnumerable<IBook> books);
         void AddBooks(IBookStoreSource bookStoreSource);
 
+        IEnumerable<IBook> FindBooks(string titlePart);
         IEnumerable<IBook> FindBooks(Func<IBook, bool> comparer);
 
         void Sort(IComparer<IBook> comparer);

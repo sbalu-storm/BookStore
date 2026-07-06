@@ -3,6 +3,7 @@ using BookStore.Models;
 
 namespace BookStore.BookStoreExporter
 {
+    //todo keep imported xml codepage on export operations
     public class XmlBookStoreExporter : IBookStoreExporter
     {
         string _xmlFileName;
@@ -17,7 +18,7 @@ namespace BookStore.BookStoreExporter
             XElement xmlTree = new XElement("LIBRARY",
                 from book in books
                 select new XElement("BOOK",
-                    new XElement("TITLE", book.Name),
+                    new XElement("TITLE", book.Title),
                     new XElement("AUTHOR", book.Author?.Name),
                     new XElement("PAGECOUNT", book.PageCount)
                 )

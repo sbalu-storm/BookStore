@@ -44,7 +44,7 @@ namespace BookStore
 
         public (string BookTitle, string AuthorName, int PageCount) FindFirstBook(string namePart)
         {
-            return _storage.Where(x => x.BookTitle.Contains(namePart, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            return _storage.Where(x => x.BookTitle.Contains(namePart, StringComparison.InvariantCulture)).FirstOrDefault();
         }
 
         public void SortByTitleAuthor(bool ascending = true)
@@ -52,16 +52,16 @@ namespace BookStore
             if (ascending)
             {
                 _storage = _storage
-                    .OrderBy(e => e.BookTitle)
-                    .ThenBy(e => e.AuthorName)
+                    .OrderBy(e => e.AuthorName)
+                    .ThenBy(e => e.BookTitle)
                     .ThenBy(e => e.PageCount)
                     .ToList();
             }
             else
             {
                 _storage = _storage
-                    .OrderByDescending(e => e.BookTitle)
-                    .ThenByDescending(e => e.AuthorName)
+                    .OrderByDescending(e => e.AuthorName)
+                    .ThenByDescending(e => e.BookTitle)
                     .ThenByDescending(e => e.PageCount)
                     .ToList();
             }
